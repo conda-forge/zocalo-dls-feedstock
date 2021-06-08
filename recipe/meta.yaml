@@ -11,18 +11,18 @@ source:
 
 build:
   number: 0
-  script: '{{ PYTHON }} -m pip install . -vv '
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
     - setuptools
   run:
     - ispyb
     - procrunner
-    - python
+    - python >=3.6
     - setuptools
     - zocalo
 
@@ -31,6 +31,10 @@ test:
     - zocalo_dls
     - zocalo_dls.service
     - zocalo_dls.wrapper
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/DiamondLightSource/python-zocalo-dls
